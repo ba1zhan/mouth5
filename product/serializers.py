@@ -16,9 +16,10 @@ class ProductListSerializer(serializers.ModelSerializer):
 class ReviewListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = 'id text '.split()
+        fields = 'id text stars '.split()
 
 class CategoryListSerializer(serializers.ModelSerializer):
+    products_count = serializers.IntegerField(read_only=True)
     class Meta:
         model = Category
-        fields = 'id name'.split()
+        fields = 'id name products_count'.split()
