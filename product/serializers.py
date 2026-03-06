@@ -11,15 +11,26 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 class ProductListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = 'id title description price  '.split()
+        fields = 'id title description price rating '.split()
 
 class ReviewListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = 'id text stars '.split()
 
+class ReviewDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = '__all__'
+
+
+
 class CategoryListSerializer(serializers.ModelSerializer):
-    products_count = serializers.IntegerField(read_only=True)
     class Meta:
         model = Category
-        fields = 'id name products_count'.split()
+        fields = 'id name'.split()
+
+class CategoryDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
